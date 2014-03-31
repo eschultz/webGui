@@ -1,0 +1,6 @@
+Menu="Debug"
+Title="System Log"
+---
+<?php
+echo "<pre>".shell_exec("cat /var/log/syslog")."</pre>";
+?>

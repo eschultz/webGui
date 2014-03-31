@@ -1,0 +1,40 @@
+Menu="Flash XenUtils"
+Title="Syslinux Configuration"
+---
+> Use this page to make changes to your `syslinux.cfg` file.  You will
+need to reboot your server for these changes to take effect.
+
+<?PHP
+$file = "/boot/syslinux/syslinux.cfg";
+$text = file_get_contents($file);
+$default_text = @file_get_contents("$file-");
+if ($default_text === FALSE)
+  $default_text = $text;
+?>
+<script>
+function setDefault(form) {
+  form.elements['text'].value = <?=json_encode($default_text);?>;
+}
+</script>
+<form markdown="1" method="POST" action="/plugins/webGui/update_file.php" target="progressFrame">
+<input type="hidden" name="file" value="<?=$file;?>">
+
+/boot/syslinux/syslinux.cfg:
+
+:   <textarea spellcheck="false" cols="80" rows="25" maxlength="2048" name="text"><?=$text;?></textarea>
+
+<button type="button" onclick="setDefault(this.form);">Default</button>
+
+:   <input type="submit" value="Apply" />
+    <input type="reset" />
+    <button type="button" onClick="done();">Done</button>
+
+
+> Click the **Apply** button to commit the current edits.  Click **Reset** to
+undo any changes you make (before Saving). Click **Done** to exit this page.
+
+> Click the **Default** button to initialize the edit box with the
+factory-default contents.  You still need to click **Apply** in order to
+commit the change.
+
+</form>

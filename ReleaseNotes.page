@@ -1,0 +1,6 @@
+Menu="Upgrade"
+Title="Release Notes"
+---
+<?PHP
+echo "<pre>"; readfile("/boot/readme.txt"); echo "</pre>";
+?>

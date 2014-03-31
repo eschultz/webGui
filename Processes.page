@@ -1,0 +1,6 @@
+Menu="Debug"
+Title="Processes"
+---
+<?php
+echo "<pre>".shell_exec("ps -ef")."</pre>";
+?>

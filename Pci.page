@@ -1,0 +1,13 @@
+Menu="Debug"
+Title="PCI Devices"
+---
+<?php
+$help = <<<EOT
+This displays the output of the `lspci` command.  The numeric identifiers are used to configure PCI pass-through.
+EOT;
+
+echo "<pre>".shell_exec("lspci")."</pre>";
+echo "<span class='inline_help'>";
+echo Markdown($help);
+echo "</span>";
+?>

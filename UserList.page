@@ -1,0 +1,22 @@
+Icon="icons/user.png"
+Menu="Users"
+Title="Users"
+---
+<table class="access_list">
+   <tr>
+   <td>Username</td>
+   <td>Description</td>
+   </tr>
+<? foreach ($users as $user): ?>
+      <tr>
+      <td><a href="<?=$path;?>/UserEdit?name=<?=$user['name'];?>"><?=$user['name'];?></a></td>
+      <td><?=$user['desc'];?></td>
+      </tr>
+<? endforeach; ?>
+</table>
+
+<form method="GET" action="<?=$path;?>/UserAdd">
+
+<input type="submit" value="Add User">
+
+</form>
